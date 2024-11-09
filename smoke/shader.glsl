@@ -11,6 +11,6 @@ vec4 effect(vec4 color, Image tex, vec2 texture_coords, vec2 screen_coords)
         + Texel(tex, texture_coords + up)
         + Texel(tex, texture_coords + left)
         + Texel(tex, texture_coords + right)
-        + 3 * Texel(tex, texture_coords + down)
-    ).rgb / 6, 1.);
+        + 2 * Texel(tex, texture_coords + down)
+    ).rgb / 5, 1.);
 }
