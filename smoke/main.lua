@@ -37,9 +37,14 @@ love.graphics.draw(
 )
 love.graphics.setCanvas()
 
+local smoke_period = 1 / 50
+local smoke_last_tick_time = love.timer.getTime()
+
 function love.draw()
   -- shaders step --
-  if love.keyboard.isDown("a") then
+  local now = love.timer.getTime()
+  if love.keyboard.isDown("a") and (now - smoke_last_tick_time) >= smoke_period then
+    smoke_last_tick_time = now
     love.graphics.setCanvas(raw_color_canvases.next)
     love.graphics.setShader(smoke_shader)
     love.graphics.draw(raw_color_canvases.current)
